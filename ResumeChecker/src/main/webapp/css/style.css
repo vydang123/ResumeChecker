@@ -130,6 +130,41 @@ a:focus {
   color: initial;
 }
 
+
+.register-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 50px 0;
+}
+.register-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1cbbb4;
+  border: none;
+  padding: 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 40px;
+  transition: transform 0.3s, background-color 0.3s;
+}
+.register-button img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+.register-button:hover {
+  background-color: #ff4f5a;
+  transform: scale(1.05);
+}
+
+.text-center-register {
+	color: white;
+	font: bold;
+	text-align: center
+}
 .btn,
 .btn:focus {
   outline: none !important;

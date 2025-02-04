@@ -75,6 +75,8 @@ public class UserDAO {
 			statement.setInt(10, user.getOccupation());
 			
 			statement.execute();
+			
+			System.out.println(user);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
