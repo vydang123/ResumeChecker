@@ -36,7 +36,7 @@
 		      <div class="col-md-8">
 		        <div class="card p-4">
 		          <h2 class="text-center mb-4">Mentor Register</h2>
-		          <form action="RegisterServlet" >	
+		          <form action="RegisterServlet" method = "post" >	
 		          	<div class="form-row">
 		              <div class="form-group col-md-6">
 		                <label for="firstname">First Name <span style="color: red;">*</span>(required)</label>
@@ -87,7 +87,8 @@
 		              <label for="description">Description</label>
 		              <textarea placeholder = "Introduce yourself to attract Job Seekers" class="form-control" name="description" id="description" rows="3"></textarea>
 		            </div>
-		            <input type="hidden" name="occupationId" value="2">
+		            <input type="hidden" name="occupationId" value="2">     
+		               
 		            <button type="submit" class="btn btn-success btn-block">Register</button>	            
 		          </form>
 		        </div>

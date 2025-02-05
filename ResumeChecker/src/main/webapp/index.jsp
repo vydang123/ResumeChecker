@@ -177,7 +177,23 @@
     </div>
   </section>
   
-  
+   <section class="about_section layout_padding">
+	   	<h1>Resume to Job Description Matcher</h1>
+	    <form action="HomeServlet" method="post" enctype="multipart/form-data">
+	        <label >Upload Resume (PDF):</label>
+	        <input type="file" name="resume" accept="application/pdf" required><br><br>
+	
+	        <label for="jobDescription">Enter Job Description:</label><br>
+	        <textarea name="jobDescription" rows="8" cols="50" required></textarea><br><br>
+	
+	        <input type="submit" value="Check Match">
+	    </form>
+	</section>
+	
+	<section class="about_section layout_padding">
+		<h1>Resume Matching Result</h1>
+	    <p><strong>Match Percentage:</strong> ${matchPercentage}%</p>
+  	</section>
     <!-- experience section -->
 
   <section class="experience_section layout_padding">

@@ -38,7 +38,9 @@ public class UserDAO {
                 loggedInUser.setPrice(resultSet.getInt("price"));
                 loggedInUser.setOccupation(resultSet.getInt("occupation_id"));
                 
+                System.out.println(loggedInUser);
                 return loggedInUser;
+                
             }
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -75,8 +77,7 @@ public class UserDAO {
 			statement.setInt(10, user.getOccupation());
 			
 			statement.execute();
-			
-			System.out.println(user);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -117,7 +118,7 @@ public class UserDAO {
 				user.setFirstName(firstname);
 				user.setLastName(lastname);
 				list.add(user);
-				
+				System.out.println(user);
 			}
 			return list;
 		} catch (SQLException e) {

@@ -75,6 +75,7 @@
 		            </div>
 		            
 		            <input type="hidden" name="occupationId" value="1">
+
 		            <button type="submit" class="btn btn-success btn-block">Register</button>
 		          </form>
 		        </div>
