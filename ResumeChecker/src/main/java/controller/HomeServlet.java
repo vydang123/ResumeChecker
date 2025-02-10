@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -17,14 +18,11 @@ import javax.servlet.http.Part;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
-import com.theokanning.openai.completion.chat.ChatCompletionChoice;
+
 import com.theokanning.openai.completion.chat.ChatCompletionRequest;
 import com.theokanning.openai.completion.chat.ChatCompletionResult;
 import com.theokanning.openai.completion.chat.ChatMessage;
 import com.theokanning.openai.service.OpenAiService;
-
-import model.ChatMessageRole;
-import model.ModelEnum;
 
 
 /**
@@ -35,7 +33,7 @@ import model.ModelEnum;
 @WebServlet("/HomeServlet")
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String OPENAI_API_KEY = "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";
+	private static final String OPENAI_API_KEY = "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";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -68,41 +66,39 @@ public class HomeServlet extends HttpServlet {
         }
     }
     
-    private double getMatchPercentageUsingOpenAI(String resume, String jobDescription) {
-    	String token = System.getenv(OPENAI_API_KEY);
-    	OpenAiService service = new OpenAiService(token);
-
-    	String prompt = "Compare the following resume and job description. " +
-                "Give a percentage score (0 to 100) indicating how well the resume matches the job description.\n\n" +
-                "Resume:\n" + resume + "\n\n" +
-                "Job Description:\n" + jobDescription + "\n\n" +
-                "Match Percentage:";
+    private double getMatchPercentageUsingOpenAI(String resumeText, String jobDescription) {
+        OpenAiService service = new OpenAiService(OPENAI_API_KEY);
+        
+        String prompt = "Given the following resume text and job description, calculate the match percentage based on skills, experience, and qualifications. " +
+                        "Provide only a numeric percentage value without additional text.\n\n" +
+                        "Resume:\n" + resumeText + "\n\n" +
+                        "Job Description:\n" + jobDescription;
 
         List<ChatMessage> messages = new ArrayList<>();
-        ChatMessage systemMessage = new ChatMessage(ChatMessageRole.SYSTEM.value(), "You are a job matching assistant.");
-        messages.add(systemMessage);
-
-        // Create user message
-        ChatMessage userMessage = new ChatMessage(ChatMessageRole.USER.value(), prompt);
-        messages.add(userMessage);
-
-        // Request OpenAI API to generate a match percentage
-        ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest
-                .builder()
-                .model(ModelEnum.GPT_3_5_TURBO_0301.getName())
+        messages.add(new ChatMessage("system", "You are a helpful AI assistant."));
+        messages.add(new ChatMessage("user", prompt));
+        
+        ChatCompletionRequest request = ChatCompletionRequest.builder()
+                .model("gpt-4")
                 .messages(messages)
+                .maxTokens(50)
+                .temperature(0.7)
                 .build();
-
-        ChatCompletionResult result = service.createChatCompletion(chatCompletionRequest);
-        String responseText = result.getChoices().get(0).getMessage().getContent();
-
-        // Extract the match percentage from the response
-        try {
-            String matchPercentageStr = responseText.replaceAll("[^0-9.]", ""); // Extract numeric value
-            return Double.parseDouble(matchPercentageStr);
-        } catch (NumberFormatException e) {
-            return 0.0; // Return 0 if parsing fails
+        
+        ChatCompletionResult result = service.createChatCompletion(request);
+        
+        if (result != null && !result.getChoices().isEmpty()) {
+            String responseText = result.getChoices().get(0).getMessage().getContent().trim();
+            try {
+                return Double.parseDouble(responseText.replace("%", ""));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
         }
+        return 0.0;
+         
+
+        
     }
 	
 	/**
@@ -118,6 +114,7 @@ public class HomeServlet extends HttpServlet {
 	        }
 
 	        String jobDescription = request.getParameter("jobDescription");
+	        System.out.println(jobDescription);
 	        if (jobDescription == null || jobDescription.trim().isEmpty()) {
 	            throw new ServletException("Job description is required.");
 	        }

@@ -178,27 +178,23 @@
   </section>
   
    <section class="about_section layout_padding">
-	   	<h1>Resume to Job Description Matcher</h1>
-	    <form action="HomeServlet" method="post" enctype="multipart/form-data">
-	        <label >Upload Resume (PDF):</label>
-	        <input type="file" name="resume" accept="application/pdf" required><br><br>
-	
-	        <label for="jobDescription">Enter Job Description:</label><br>
-	        <textarea name="jobDescription" rows="8" cols="50" required></textarea><br><br>
-	
-	        <input type="submit" value="Check Match">
+	    <h1 class="heading">Resume to Job Description Matcher</h1>
+	    <form action="HomeServlet" method="post" enctype="multipart/form-data" class="form-container">
+	        <label class="form-label">Upload Resume (PDF):</label>
+	        <input type="file" name="resume" accept="application/pdf" required class="form-input"><br><br>
+	        
+	        <label class="form-label" for="jobDescription">Enter Job Description:</label><br>
+	        <textarea name="jobDescription" rows="8" cols="50" required class="form-textarea"></textarea><br><br>
+	        
+	        <input type="submit" value="Check Match" class="form-button">
 	    </form>
 	</section>
 	
 	<section class="about_section layout_padding">
-		<h1>Resume Matching Result</h1>
-	    <p><strong>Match Percentage:</strong> ${matchPercentage}%</p>
-  	</section>
+	    <h1 class="heading">Resume Matching Result</h1>
+	    <p class="result-text"><strong>Match Percentage:</strong> <span id="matchPercentage">${matchPercentage}%</span></p>
+	</section>
     <!-- experience section -->
-
-  <section class="experience_section layout_padding">
-    
-  </section>
 
   <!-- footer section -->
   <jsp:include page="footer.jsp"></jsp:include>
