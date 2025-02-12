@@ -126,4 +126,41 @@ public class UserDAO {
 		}
 		return null;
 	}
+	
+    public ArrayList<User> getMentors() {
+        ArrayList<User> mentors = new ArrayList<>();
+        try {
+            // SQL query to select users with occupation type 2 (mentors)
+            String SQL_QUERY = "SELECT * FROM user WHERE occupation_id = 2";
+
+            statement = conn.prepareStatement(SQL_QUERY);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                User mentor = new User();
+                mentor.setId(resultSet.getInt("id"));
+                mentor.setUsername(resultSet.getString("username"));
+                mentor.setFirstName(resultSet.getString("first_name"));
+                mentor.setLastName(resultSet.getString("last_name"));
+                mentor.setEmail(resultSet.getString("email"));
+                mentor.setTitle(resultSet.getString("title"));
+                mentor.setPrice(resultSet.getInt("price"));
+                mentor.setOccupation(resultSet.getInt("occupation_id"));
+
+                mentors.add(mentor);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+                conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        System.out.println(mentors);
+        return mentors;
+    }
 }

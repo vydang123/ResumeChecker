@@ -30,7 +30,7 @@
 </head>
 <body  class="sub_page">
 	<div class="hero_area">
-		<jsp:include page="headerGeneral.jsp"></jsp:include>
+		<jsp:include page="header.jsp"></jsp:include>
 		<div class="container layout_padding">
 		  <h2 class="text-center-register">Are you a:</h2>
 	      <div class="register-buttons">

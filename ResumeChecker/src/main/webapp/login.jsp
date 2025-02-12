@@ -28,13 +28,14 @@
 </head>
 <body class="sub_page">
 	<div class="hero_area">
-	<jsp:include page="headerGeneral.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	  <div class="container layout_padding">
 	    <div class="row justify-content-center">
 	      <div class="col-md-6">
 	        <div class="card p-4">
 	          <h2 class="text-center mb-4">Login</h2>
 	          <form action="LoginServlet" method="post">
+	          	<input type="text" name="action" value="LOG_IN" hidden>
 	            <div class="form-group">
 	              <label for="username">Username</label>
 	              <input type="text" class="form-control" name="username" id="username" required>

@@ -31,7 +31,7 @@
 <body>
   <div class="hero_area">
     <!-- header section strats -->
-    <jsp:include page="headerGeneral.jsp"></jsp:include>
+    <jsp:include page="header.jsp"></jsp:include>
     <!-- end header section -->
     <!-- slider section -->
     <section class="slider_section ">
