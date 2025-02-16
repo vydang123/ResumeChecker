@@ -14,7 +14,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Login Page</title>
+  <title>Profile Page</title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -35,46 +35,48 @@
                 <c:set var="user" value="${sessionScope.user}" />
                 <div class="profile_container">
                     <div class="profile_card">
-                        <h3>Welcome, ${user.firstName} ${user.lastName}!</h3>
+                       <h3>Welcome, ${sessionScope.user.firstName} ${sessionScope.user.lastName}!</h3>
 
-                        <table class="profile_table">
-                            <tr>
-                                <th>First Name</th>
-                                <td>${user.firstName}</td>
-                            </tr>
-                            <tr>
-                                <th>Last Name</th>
-                                <td>${user.lastName}</td>
-                            </tr>
-                            <tr>
-                                <th>Email</th>
-                                <td>${user.email}</td>
-                            </tr>
-                            <tr>
-                                <th>Date of Birth</th>
-                                <td>${user.dob}</td>
-                            </tr>
-
-                            <!-- Additional details for occupation type 2 -->
-                            <c:if test="${sessionScope.user.occupation == 2}">
-                                <tr>
-                                    <th>Description</th>
-                                    <td>${user.description}</td>
-                                </tr>
-                                <tr>
-                                    <th>Title</th>
-                                    <td>${user.title}</td>
-                                </tr>
-                                <tr>
-                                    <th>Price</th>
-                                    <td>${user.price}</td>
-                                </tr>
-                            </c:if>
-                        </table>
+						<form action="ProfileServlet" method="POST">
+			              <table class="profile_table">
+			                <tr>
+			                  <th>First Name</th>
+			                  <td><input type="text" name="firstName" value="${sessionScope.user.firstName}" /></td>
+			                </tr>
+			                <tr>
+			                  <th>Last Name</th>
+			                  <td><input type="text" name="lastName" value="${sessionScope.user.lastName}" /></td>
+			                </tr>
+			                <tr>
+			                  <th>Email</th>
+			                  <td><input type="email" name="email" value="${sessionScope.user.email}" /></td>
+			                </tr>
+			                <tr>
+			                  <th>Date of Birth</th>
+			                  <td><input type="date" name="dob" value="${sessionScope.user.dob}" /></td>
+			                </tr>
+			
+			                <!-- Optional fields for occupation type 2 -->
+			                <c:if test="${sessionScope.user.occupation == 2}">
+			                  <tr>
+			                    <th>Description</th>
+			                    <td><input type="text" name="description" value="${sessionScope.user.description}" /></td>
+			                  </tr>
+			                  <tr>
+			                    <th>Title</th>
+			                    <td><input type="text" name="title" value="${sessionScope.user.title}" /></td>
+			                  </tr>
+			                  <tr>
+			                    <th>Price</th>
+			                    <td><input type="number" name="price" value="${sessionScope.user.price}" /></td>
+			                  </tr>
+			                </c:if>
+			              </table>
+			              <button type="submit" class="btn btn-primary">Save Changes</button>
+			            </form>
                     </div>
                 </div>
             </c:if>
-        </div>
 		</div>
 	</div>
 	

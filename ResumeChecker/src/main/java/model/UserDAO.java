@@ -163,4 +163,81 @@ public class UserDAO {
         System.out.println(mentors);
         return mentors;
     }
+    
+    public User getUser(String username, String password) {
+		try {
+			//WRITE SQL QUERY
+			String SQL_QUERY = "SELECT * FROM user WHERE username = ? AND password = ?";
+			
+			
+			//EXECUTE QUERY	
+			statement = conn.prepareStatement(SQL_QUERY);
+			statement.setString(1, username);
+			statement.setString(2, password);
+			ResultSet resultSet = statement.executeQuery();
+			
+			if (resultSet.next()) {
+                // Populate JobSeeker object with data from the database
+                User loggedInUser = new User();
+                loggedInUser.setId(resultSet.getInt("id"));
+                loggedInUser.setUsername(resultSet.getString("username"));
+                loggedInUser.setPassword(resultSet.getString("password"));
+                loggedInUser.setFirstName(resultSet.getString("first_name"));
+                loggedInUser.setLastName(resultSet.getString("last_name"));
+                loggedInUser.setEmail(resultSet.getString("email"));
+                loggedInUser.setDob(resultSet.getString("dob"));
+                loggedInUser.setDescription(resultSet.getString("description"));
+                loggedInUser.setTitle(resultSet.getString("title"));
+                loggedInUser.setPrice(resultSet.getInt("price"));
+                loggedInUser.setOccupation(resultSet.getInt("occupation_id"));
+                
+                System.out.println(loggedInUser);
+                return loggedInUser;
+                
+            }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				statement.close();
+				conn.close();
+			}catch (SQLException ex) {
+				
+			}
+		}
+		
+		return null;
+	}
+    
+    public void updateUser(User user) {
+        try {
+            // SQL query to update user details
+            String SQL_QUERY = "UPDATE user SET first_name = ?, last_name = ?, email = ?, dob = ?, title = ?, price = ?, description = ? WHERE id = ?";
+            
+            // Prepare the statement
+            statement = conn.prepareStatement(SQL_QUERY);
+            statement.setString(1, user.getFirstName());
+            statement.setString(2, user.getLastName());
+            statement.setString(3, user.getEmail());
+            statement.setString(4, user.getDob());
+            statement.setString(5, user.getTitle());
+            statement.setInt(6, user.getPrice());
+            statement.setString(7, user.getDescription());
+            statement.setInt(8, user.getId());
+            
+            // Execute the update
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+                conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
 }

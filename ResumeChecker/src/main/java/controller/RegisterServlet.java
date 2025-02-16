@@ -34,14 +34,6 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//	    OccupationDAO occDAO = new OccupationDAO();
-//	    ArrayList<Occupation> occupations = occDAO.getAllOccupations();
-//	    System.out.print(occupations);
-//	    System.out.print("aaa");
-//	    request.setAttribute("occ", occupations);
-//
-//		RequestDispatcher rd=request.getRequestDispatcher("registerJobSeeker.jsp");
-//		rd.forward(request, response);
 		
 		String username = request.getParameter("username");
         String password = request.getParameter("password");

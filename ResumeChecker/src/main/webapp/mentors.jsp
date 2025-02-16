@@ -14,7 +14,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Login Page</title>
+  <title>Mentor List Page</title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -30,36 +30,42 @@
 	<div class="hero_area">
 		<jsp:include page="header.jsp"></jsp:include>
 		<div class="container layout_padding">
-			<h2>Mentors List</h2>
-			
-            <c:if test="${not empty mentors}">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Title</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="mentor" items="${mentors}">
-                            <tr>
-                                <td>${mentor.firstName}</td>
-                                <td>${mentor.lastName}</td>
-                                <td>${mentor.email}</td>
-                                <td>${mentor.title}</td>
-                                <td>${mentor.price}</td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-            </c:if>
-
-            <c:if test="${empty mentors}">
-                <p>No mentors available.</p>
-            </c:if>
+			<div class="heading_container text-center">
+	        <h2>Mentors List</h2>
+	      </div>
+	
+	      <c:if test="${not empty mentors}">
+	        <div class="profile_container">
+	          <div class="profile_card">
+	            <table class="profile_table">
+	              <thead>
+	                <tr>
+	                  <th>First Name</th>
+	                  <th>Last Name</th>
+	                  <th>Email</th>
+	                  <th>Title</th>
+	                  <th>Price</th>
+	                </tr>
+	              </thead>
+	              <tbody>
+	                <c:forEach var="mentor" items="${mentors}">
+	                  <tr>
+	                    <td>${mentor.firstName}</td>
+	                    <td>${mentor.lastName}</td>
+	                    <td>${mentor.email}</td>
+	                    <td>${mentor.title}</td>
+	                    <td>${mentor.price}</td>
+	                  </tr>
+	                </c:forEach>
+	              </tbody>
+	            </table>
+	          </div>
+	        </div>
+	      </c:if>
+	
+	      <c:if test="${empty mentors}">
+	        <p class="error_message">No mentors available.</p>
+	      </c:if>
 		</div>
 	</div>
 
