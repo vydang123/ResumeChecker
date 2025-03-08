@@ -29,13 +29,6 @@ public class AppointmentDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				statement.close();
-				conn.close();
-			}catch (SQLException ex) {
-				
-			}
 		}
 
 	}
@@ -64,15 +57,8 @@ public class AppointmentDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                statement.close();
-                conn.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
         }
-        System.out.println(appointments);
+
         return appointments;
     }
 	

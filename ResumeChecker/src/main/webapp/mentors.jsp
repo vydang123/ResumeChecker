@@ -43,8 +43,7 @@
 	                        <span class="mentor_info">${mentor.email} - ${mentor.title} - $${mentor.price}</span>
 	                    </div>
 	                    <div class="mentor_details">
-	                    	
-	                        <p>${mentor.description}</p>
+	                    	<textarea disable placeholder = "Introduce yourself to attract Job Seekers and provide availability" row = "10" type="text" name="description" > ${mentor.description}</textarea>
 	                        
 	                        <a href="BookingServlet?&mentorID=${mentor.id}" class="btn btn-primary">Make Appointment</a>
 	                    </div>

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import model.User;
 import model.UserDAO;
@@ -36,7 +37,10 @@ public class ProfileServlet extends HttpServlet {
 			getProfile(request, response);
 			break;
 		}
-
+		case "UPDATE_AVATAR": {
+			updateAvatar(request, response);
+			break;
+		}
 		default:
 			modifyProfile(request, response);
 		}
@@ -114,8 +118,30 @@ public class ProfileServlet extends HttpServlet {
     }
 	
 	protected void getProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("id");
+		String id = request.getParameter("id");
+		
+		UserDAO dao = new UserDAO();
+		User user = dao.getUserByID(Integer.parseInt(id));
+		
+        request.setAttribute("user", user);
+        request.getRequestDispatcher("profileView.jsp").forward(request, response);
     }
+	
+	protected void updateAvatar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User user = new User();
+        HttpSession session = request.getSession();
+        user = (User) session.getAttribute("user");
+        
+		int id = user.getId();
+		
+		for (Part part: request.getParts()) {
+			part.write(
+					"C:\\Users\\vydan\\git\\CourseProject\\ResumeChecker\\src\\main\\webapp\\images\\" + id + ".jpg");
+		}
+		
+		 response.sendRedirect("ProfileServlet");
+	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

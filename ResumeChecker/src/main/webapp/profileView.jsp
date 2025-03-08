@@ -30,13 +30,8 @@
 	<div class="hero_area">
 		<jsp:include page="header.jsp"></jsp:include>
 		<div class="container layout_padding background-color" >
-
-            <c:if test="${not empty sessionScope.user}">
-                <c:set var="user" value="${sessionScope.user}" />
                 <div class="profile_container">
                     <div class="profile_card">
-                        <h3>Welcome, ${user.firstName} ${user.lastName}!</h3>
-
                         <table class="profile_table">
                             <tr>
                                 <th>First Name</th>
@@ -56,7 +51,7 @@
                             </tr>
 
                             <!-- Additional details for occupation type 2 -->
-                            <c:if test="${sessionScope.user.occupation == 2}">
+                            <c:if test="${user.occupation == 2}">
                                 <tr>
                                     <th>Description</th>
                                     <td>${user.description}</td>
@@ -72,8 +67,6 @@
                             </c:if>
                         </table>
                     </div>
-                </div>
-            </c:if>
         </div>
 		</div>
 	</div>

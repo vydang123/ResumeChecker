@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import model.Appointment;
 import model.AppointmentDAO;
+import model.EmailUtils;
 import model.User;
 import model.UserDAO;
 
@@ -104,6 +105,26 @@ public class BookingServlet extends HttpServlet {
         appointment.setMentorID(mentor.getId());
         
         dao.bookAppointment(appointment);
+        
+     // Send email confirmation
+        String subject = "Appointment Confirmation";
+        String jobSeekerMessage = "Dear " + user.getFirstName() + user.getLastName() 
+        							+ ",\n\nYour appointment with " + mentor.getFirstName() + " " + mentor.getLastName() 
+        							+ " is confirmed for " + date 
+        							+ ".\n\nTitle: " + title 
+        							+ "\nPrice: " + mentor.getPrice() 
+        							+ "\n\nThank you!";
+        String mentorMessage = "Dear " + mentor.getFirstName() + " " + mentor.getLastName() 
+        						+ ",\n\nYou have a new appointment with " + user.getFirstName() + user.getLastName() 
+        						+ " on " + date 
+        						+ ".\n\nTitle: " + title 
+        						+ "\nPrice: " + mentor.getPrice() 
+        						+ "\n\nThank you!";
+        
+        System.out.println("user email: "+user.getEmail());
+        System.out.println("metor email: " + mentor.getEmail());
+        EmailUtils.sendEmail(user.getEmail(), subject, jobSeekerMessage);
+        EmailUtils.sendEmail(mentor.getEmail(), subject, mentorMessage);
         
         response.sendRedirect("AppointmentServlet");
 	}

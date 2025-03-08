@@ -197,14 +197,7 @@ public class UserDAO {
             }
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				statement.close();
-				conn.close();
-			}catch (SQLException ex) {
-				
-			}
-		}
+		} 
 		
 		return null;
 	}
@@ -230,14 +223,7 @@ public class UserDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                statement.close();
-                conn.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-        }
+        } 
     }
 
     public User getUserByID(int id) {
@@ -271,13 +257,6 @@ public class UserDAO {
             }
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				statement.close();
-				conn.close();
-			}catch (SQLException ex) {
-				
-			}
 		}
 		
 		return null;

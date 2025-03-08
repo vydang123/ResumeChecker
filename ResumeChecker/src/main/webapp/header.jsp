@@ -23,7 +23,7 @@
 	
 				<c:if test="${not empty sessionScope.user}">
 			    	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			    		<p>Hello, ${sessionScope.user.firstName}</p>
+			    		<p style="color: white; font-weight: bold;">Hello, ${sessionScope.user.firstName}</p>
 			            <ul class="navbar-nav  ">
 			              <li class="nav-item active">
 			                <a class="nav-link" href="profile.jsp">Profile <span class="sr-only">(current)</span></a>

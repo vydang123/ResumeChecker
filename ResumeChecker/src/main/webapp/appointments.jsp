@@ -48,8 +48,8 @@
 		
 		                <p> Date: ${appointmentDate} </p>
 		                <p> Time: ${appointmentTime} </p>
-	                    <p> Job Seeker: ${appointment.jobSeekerID} </p>
-	                    <p> Mentor: ${appointment.mentorID} </p>
+	                    <a href = "ProfileServlet?action=GET_PROFILE&id=${appointment.jobSeekerID}"> Job Seeker: ${jobSeekerNames[appointment.jobSeekerID]}</a>
+	                    <a href = "ProfileServlet?action=GET_PROFILE&id=${appointment.mentorID}"> Mentor: ${mentorNames[appointment.mentorID]} </a>
 	                    
 	                    <c:set var="currentDate" value="<%= new java.text.SimpleDateFormat(\"yyyy-MM-dd\").format(new java.util.Date()) %>" />
 

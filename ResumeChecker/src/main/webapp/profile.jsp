@@ -31,49 +31,60 @@
 		<jsp:include page="header.jsp"></jsp:include>
 		<div class="container layout_padding background-color" >
 
+			
             <c:if test="${not empty sessionScope.user}">
                 <c:set var="user" value="${sessionScope.user}" />
+                <h3 style = "color: white" >Welcome, ${sessionScope.user.firstName} ${sessionScope.user.lastName}!</h3>
                 <div class="profile_container">
                     <div class="profile_card">
-                       <h3>Welcome, ${sessionScope.user.firstName} ${sessionScope.user.lastName}!</h3>
 
-						<form action="ProfileServlet" method="POST">
-			              <table class="profile_table">
-			                <tr>
-			                  <th>First Name</th>
-			                  <td><input type="text" name="firstName" value="${sessionScope.user.firstName}" /></td>
-			                </tr>
-			                <tr>
-			                  <th>Last Name</th>
-			                  <td><input type="text" name="lastName" value="${sessionScope.user.lastName}" /></td>
-			                </tr>
-			                <tr>
-			                  <th>Email</th>
-			                  <td><input type="email" name="email" value="${sessionScope.user.email}" /></td>
-			                </tr>
-			                <tr>
-			                  <th>Date of Birth</th>
-			                  <td><input type="date" name="dob" value="${sessionScope.user.dob}" /></td>
-			                </tr>
-			
-			                <!-- Optional fields for occupation type 2 -->
-			                <c:if test="${sessionScope.user.occupation == 2}">
-			                  <tr>
-			                    <th>Description</th>
-			                    <td><textarea placeholder = "Introduce yourself to attract Job Seekers and provide availability" row = "6" type="text" name="description" > ${sessionScope.user.description}</textarea></td>
-			                  </tr>
-			                  <tr>
-			                    <th>Title</th>
-			                    <td><input type="text" name="title" value="${sessionScope.user.title}" /></td>
-			                  </tr>
-			                  <tr>
-			                    <th>Price</th>
-			                    <td><input type="number" name="price" value="${sessionScope.user.price}" /></td>
-			                  </tr>
-			                </c:if>
-			              </table>
-			              <button type="submit" class="btn btn-primary">Save Changes</button>
-			            </form>
+                       <div class="avatar">
+                           <img id="avatar-img" src="images/${sessionScope.user.id}.jpg" alt="Avatar" class="avatar-img" onerror="this.onerror=null; this.src='images/default-avatar.jpg';" />
+                           <form action="ProfileServlet" method="POST" enctype="multipart/form-data">
+                               <input  type="file" name="avatar" />
+                               <button type="submit" class="btn btn-primary" name="action" value="UPDATE_AVATAR">Update Avatar</button>
+                           </form>
+                       </div>
+
+						<div class="profile_details">
+							<form action="ProfileServlet" method="POST">
+				              <table class="profile_table">
+				                <tr>
+				                  <th>First Name</th>
+				                  <td><input type="text" name="firstName" value="${sessionScope.user.firstName}" /></td>
+				                </tr>
+				                <tr>
+				                  <th>Last Name</th>
+				                  <td><input type="text" name="lastName" value="${sessionScope.user.lastName}" /></td>
+				                </tr>
+				                <tr>
+				                  <th>Email</th>
+				                  <td><input type="email" name="email" value="${sessionScope.user.email}" /></td>
+				                </tr>
+				                <tr>
+				                  <th>Date of Birth</th>
+				                  <td><input type="date" name="dob" value="${sessionScope.user.dob}" /></td>
+				                </tr>
+				
+				                <!-- Optional fields for occupation type 2 -->
+				                <c:if test="${sessionScope.user.occupation == 2}">
+				                  <tr>
+				                    <th>Description</th>
+				                    <td><textarea placeholder = "Introduce yourself to attract Job Seekers and provide availability" row = "10" type="text" name="description" > ${sessionScope.user.description}</textarea></td>
+				                  </tr>
+				                  <tr>
+				                    <th>Title</th>
+				                    <td><input type="text" name="title" value="${sessionScope.user.title}" /></td>
+				                  </tr>
+				                  <tr>
+				                    <th>Price</th>
+				                    <td><input type="number" name="price" value="${sessionScope.user.price}" /></td>
+				                  </tr>
+				                </c:if>
+				              </table>
+				              <button type="submit" class="btn btn-primary">Save Changes</button>
+				            </form>
+				        </div>
                     </div>
                 </div>
             </c:if>

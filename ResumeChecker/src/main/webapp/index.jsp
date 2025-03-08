@@ -56,20 +56,19 @@
                 <div class="col-md-5 offset-md-1">
                   <div class="detail-box">
                     <h1>
-                      You Can <br>
-                      Hire Freelancer <br>
-                      Here
+                      Find Your Perfect Mentor <br>
+                      To Improve Your Resume
                     </h1>
                     <p>
-                      It is a long established fact that a reader will be distracted by
-                      the readable content of a page
+                      Connect with professionals who can help enhance your resume and guide you towards your dream job.
+                    
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn-1">
-                        About Us
+                      <a href="registerMentor.jsp" class="btn-1">
+                        Become A Mentor
                       </a>
-                      <a href="" class="btn-2">
-                        Get A Quote
+                      <a href="registerJobSeeker.jsp" class="btn-2">
+                        Job Seeker Register
                       </a>
                     </div>
                   </div>
@@ -88,22 +87,12 @@
                 <div class="col-md-5 offset-md-1">
                   <div class="detail-box">
                     <h1>
-                      You Can <br>
-                      Hire Freelancer <br>
-                      Here
+                      Perfect Your Resume <br>
+                      With Expert Feedback
                     </h1>
                     <p>
-                      It is a long established fact that a reader will be distracted by
-                      the readable content of a page
-                    </p>
-                    <div class="btn-box">
-                      <a href="" class="btn-1">
-                        About Us
-                      </a>
-                      <a href="" class="btn-2">
-                        Get A Quote
-                      </a>
-                    </div>
+                     Job seekers can upload resumes and get feedback on how well their resumes match job descriptions.
+                    </p> 
                   </div>
                 </div>
                 <div class="offset-md-1 col-md-4 img-container">
@@ -120,20 +109,18 @@
                 <div class="col-md-5 offset-md-1">
                   <div class="detail-box">
                     <h1>
-                      You Can <br>
-                      Hire Freelancer <br>
-                      Here
+                      Empower Job Seekers <br>
+                      With Tailored Guidance
                     </h1>
                     <p>
-                      It is a long established fact that a reader will be distracted by
-                      the readable content of a page
+                      As a mentor, you can provide personalized guidance to help job seekers enhance their resumes and secure their next opportunity.
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn-1">
-                        About Us
+                      <a href="registerMentor.jsp" class="btn-1">
+                        Become A Mentor
                       </a>
-                      <a href="" class="btn-2">
-                        Get A Quote
+                      <a href="registerJobSeeker.jsp" class="btn-2">
+                        Job Seeker Register
                       </a>
                     </div>
                   </div>
@@ -165,14 +152,11 @@
       </div>
       <div class="detail-box">
         <h2>
-          About Spering Company
+          About Our Resume Matching Platform
         </h2>
         <p>
-          There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If youThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you
+          Our platform helps job seekers to enhance their resumes by matching them with job descriptions and mentors who can offer valuable feedback and guidance. Job seekers can also upload their resumes to see how closely they match the ideal job requirements.
         </p>
-        <a href="">
-          Read More
-        </a>
       </div>
     </div>
   </section>
