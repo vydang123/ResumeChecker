@@ -33,7 +33,6 @@ import com.theokanning.openai.service.OpenAiService;
 @WebServlet("/HomeServlet")
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-      
     /**
      * @see HttpServlet#HttpServlet()
      */
