@@ -17,7 +17,7 @@ import model.UserDAO;
 @WebServlet("/ProfileServlet")
 public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private final String DEFAULT_ACTION = "DEFAULT";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -30,6 +30,25 @@ public class ProfileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String action = request.getParameter("action") == null ? DEFAULT_ACTION : request.getParameter("action");
+		switch (action) {
+		case "GET_PROFILE": {
+			getProfile(request, response);
+			break;
+		}
+
+		default:
+			modifyProfile(request, response);
+		}
+    }
+	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	
+	
+	protected void modifyProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userId");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -94,10 +113,9 @@ public class ProfileServlet extends HttpServlet {
         response.sendRedirect("profile.jsp");
     }
 	
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	protected void getProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userId = request.getParameter("id");
+    }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

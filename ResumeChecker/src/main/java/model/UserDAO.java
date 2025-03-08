@@ -145,6 +145,7 @@ public class UserDAO {
                 mentor.setEmail(resultSet.getString("email"));
                 mentor.setTitle(resultSet.getString("title"));
                 mentor.setPrice(resultSet.getInt("price"));
+                mentor.setDescription(resultSet.getString("description"));
                 mentor.setOccupation(resultSet.getInt("occupation_id"));
 
                 mentors.add(mentor);
@@ -160,7 +161,6 @@ public class UserDAO {
                 ex.printStackTrace();
             }
         }
-        System.out.println(mentors);
         return mentors;
     }
     
@@ -240,4 +240,46 @@ public class UserDAO {
         }
     }
 
+    public User getUserByID(int id) {
+		try {
+			//WRITE SQL QUERY
+			String SQL_QUERY = "SELECT * FROM user WHERE id = ?";
+			
+			
+			//EXECUTE QUERY	
+			statement = conn.prepareStatement(SQL_QUERY);
+			statement.setInt(1, id);
+			ResultSet resultSet = statement.executeQuery();
+			
+			if (resultSet.next()) {
+                // Populate JobSeeker object with data from the database
+                User mentor = new User();
+                mentor.setId(resultSet.getInt("id"));
+                mentor.setUsername(resultSet.getString("username"));
+                mentor.setPassword(resultSet.getString("password"));
+                mentor.setFirstName(resultSet.getString("first_name"));
+                mentor.setLastName(resultSet.getString("last_name"));
+                mentor.setEmail(resultSet.getString("email"));
+                mentor.setDob(resultSet.getString("dob"));
+                mentor.setDescription(resultSet.getString("description"));
+                mentor.setTitle(resultSet.getString("title"));
+                mentor.setPrice(resultSet.getInt("price"));
+                mentor.setOccupation(resultSet.getInt("occupation_id"));
+                
+                return mentor;
+                
+            }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				statement.close();
+				conn.close();
+			}catch (SQLException ex) {
+				
+			}
+		}
+		
+		return null;
+	}
 }

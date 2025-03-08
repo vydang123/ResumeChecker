@@ -31,35 +31,25 @@
 		<jsp:include page="header.jsp"></jsp:include>
 		<div class="container layout_padding">
 			<div class="heading_container text-center">
-	        <h2>Mentors List</h2>
-	      </div>
+	        	<h2 style="color: white;">Mentors List</h2>
+	      	</div>
 	
 	      <c:if test="${not empty mentors}">
-	        <div class="profile_container">
-	          <div class="profile_card">
-	            <table class="profile_table">
-	              <thead>
-	                <tr>
-	                  <th>First Name</th>
-	                  <th>Last Name</th>
-	                  <th>Email</th>
-	                  <th>Title</th>
-	                  <th>Price</th>
-	                </tr>
-	              </thead>
-	              <tbody>
-	                <c:forEach var="mentor" items="${mentors}">
-	                  <tr>
-	                    <td>${mentor.firstName}</td>
-	                    <td>${mentor.lastName}</td>
-	                    <td>${mentor.email}</td>
-	                    <td>${mentor.title}</td>
-	                    <td>${mentor.price}</td>
-	                  </tr>
-	                </c:forEach>
-	              </tbody>
-	            </table>
-	          </div>
+	        <div class="mentor_list">
+	            <c:forEach var="mentor" items="${mentors}">
+	                <div class="mentor_card">
+	                    <div class="mentor_header" onclick="toggleMentor(this)">
+	                        <span class="mentor_name">${mentor.firstName} ${mentor.lastName}</span>
+	                        <span class="mentor_info">${mentor.email} - ${mentor.title} - $${mentor.price}</span>
+	                    </div>
+	                    <div class="mentor_details">
+	                    	
+	                        <p>${mentor.description}</p>
+	                        
+	                        <a href="BookingServlet?&mentorID=${mentor.id}" class="btn btn-primary">Make Appointment</a>
+	                    </div>
+	                </div>
+	            </c:forEach>
 	        </div>
 	      </c:if>
 	
@@ -77,5 +67,11 @@
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="js/custom.js"></script>
+  <script>
+    function toggleMentor(element) {
+        var details = element.nextElementSibling;
+        details.style.display = (details.style.display === "block") ? "none" : "block";
+    }
+  </script>
 </body>
 </html>

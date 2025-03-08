@@ -34,7 +34,8 @@ public class MentorServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserDAO userDAO = new UserDAO();
         ArrayList<User> mentors = userDAO.getMentors();
-
+        System.out.println(mentors + "0000");
+        
         request.setAttribute("mentors", mentors);
 
         RequestDispatcher rd=request.getRequestDispatcher("mentors.jsp");

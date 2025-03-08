@@ -32,7 +32,7 @@
 			                <a class="nav-link" href="MentorServlet"> Mentors</a>
 			              </li>
 			              <li class="nav-item">
-			                <a class="nav-link" href="appoinment.jsp">Appointments </a>
+			                <a class="nav-link" href="AppointmentServlet">Appointments </a>
 			              </li>
 			            </ul>
 			        	<a href="LoginServlet?action=LOG_OUT&logout=true">Logout</a>

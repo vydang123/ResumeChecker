@@ -85,7 +85,7 @@
 		            </div>
 		            <div class="form-group">
 		              <label for="description">Description</label>
-		              <textarea placeholder = "Introduce yourself to attract Job Seekers" class="form-control" name="description" id="description" rows="3"></textarea>
+		              <textarea placeholder = "Introduce yourself to attract Job Seekers and provide availability" class="form-control" name="description" id="description" rows="6"></textarea>
 		            </div>
 		            <input type="hidden" name="occupationId" value="2">     
 		               

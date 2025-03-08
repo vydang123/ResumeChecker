@@ -33,7 +33,7 @@ import com.theokanning.openai.service.OpenAiService;
 @WebServlet("/HomeServlet")
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String OPENAI_API_KEY = "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";
+//	private static final String OPENAI_API_KEY = "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";
        
     /**
      * @see HttpServlet#HttpServlet()

@@ -60,7 +60,7 @@
 			                <c:if test="${sessionScope.user.occupation == 2}">
 			                  <tr>
 			                    <th>Description</th>
-			                    <td><input type="text" name="description" value="${sessionScope.user.description}" /></td>
+			                    <td><textarea placeholder = "Introduce yourself to attract Job Seekers and provide availability" row = "6" type="text" name="description" > ${sessionScope.user.description}</textarea></td>
 			                  </tr>
 			                  <tr>
 			                    <th>Title</th>
